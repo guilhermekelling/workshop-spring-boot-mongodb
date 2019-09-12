@@ -1,4 +1,4 @@
-package com.guilhermerk.workshopmongo.service;
+package com.guilhermerk.workshopmongo.services;
 
 import java.util.List;
 import java.util.Optional;
