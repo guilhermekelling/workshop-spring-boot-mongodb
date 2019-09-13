@@ -18,6 +18,8 @@ import com.guilhermerk.workshopmongo.domain.User;
 import com.guilhermerk.workshopmongo.dto.UserDTO;
 import com.guilhermerk.workshopmongo.services.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/users")
 public class UserResource {
@@ -25,6 +27,7 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 
+	@ApiOperation(value="Busca os usuários")
 	@RequestMapping(method=RequestMethod.GET)
  	public ResponseEntity<List<UserDTO>> findAll() {
 		List<User> list = service.findAll();
@@ -33,6 +36,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@ApiOperation(value="Busca por id")
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
  	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
 		User obj = service.findById(id);
@@ -47,6 +51,7 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value="Remove usuário por id")	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
  	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);
